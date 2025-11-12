@@ -12,6 +12,44 @@ public class Cart {
 		itemsInCart[qtyOrdered++] = disc;
 		System.out.println("The disc has been added successfully");
 	}
+	
+	public void addDVD(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
+		if (qtyOrdered + 2 > MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is almost full");
+			return;
+		}
+		addDVD(disc1); addDVD(disc2);
+		System.out.println("The two discs have been added successfully");
+	}
+	
+	// using array as parameter is not better than using varargs in this scenario
+	/*
+	public void addDVD(DigitalVideoDisc[] discs) {
+		if (discs == null) return;
+		if (qtyOrdered + discs.length > MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is almost full");
+			return;
+		}
+		for (DigitalVideoDisc disc : discs) {
+			addDVD(disc);
+		}
+		System.out.println("The list of discs has been added successfully");
+	}
+	*/
+	
+	public void addDVD(DigitalVideoDisc... discs) {
+		if (discs == null) return;
+		if (qtyOrdered + discs.length > MAX_NUMBER_ORDERED) {
+			System.out.println("The cart is almost full");
+			return;
+		}
+		for (DigitalVideoDisc disc : discs) {
+			addDVD(disc);
+		}
+		System.out.println("The list of discs has been added successfully");
+	}
+	
+	
 	public void removeDVD(DigitalVideoDisc disc) {
 		if (qtyOrdered == 0) {
 			System.out.println("The cart is empty");
