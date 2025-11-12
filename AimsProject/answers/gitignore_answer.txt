@@ -1,0 +1,19 @@
+Tại sao những đường dẫn trên nên được thêm vào .gitignore (nếu không thêm thì sao)?
+
+- Vì đó là đường dẫn của những file, folder do Eclipse IDE sinh ra, chứ không phải là mã nguồn (ở trong thư mục src) của project.
+- Nếu không thêm vào, thì những file, folder do IDE sinh ra sẽ được commit, có thể gây ra xung đột với những người khác khi merge do sử dụng IDE khác nhau
+
+
+Nếu sử dụng những công cụ khác để lập trình Java (như IntelliJ hoặc VSCode), thì những đường dẫn nào được thêm?
+
+- Với VSCode, thêm folder .vscode/
+
+
+Trong trường hợp bạn đã lỡ commit các file tạm lên Git, nhưng sau đó bạn đã thêm chúng vào .gitignore và muốn Git ngừng theo dõi chúng mà không xóa khỏi máy, bạn sẽ cần thực hiện những thao tác nào?
+
+- Trước hết, cần để Git quên những file, folder mình không muốn theo dõi (nhưng không xóa nó), sử dụng:
+git rm --cached <file>, hoặc git rm -r --cached <folder>
+- Thêm .gitignore vào danh sách chuẩn bị commit, nếu có sự thay đổi:
+git add .gitignore
+- Cuối cùng commit những sự thay đổi ở trên:
+git commit -m 'message'
