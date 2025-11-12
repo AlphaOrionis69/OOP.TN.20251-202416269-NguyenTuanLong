@@ -1,0 +1,8 @@
+Chuyện gì xảy ra khi thêm phương thức này (addDVD(DigitalVideoDisc... discs)), tại sao?
+
+- Khi thêm phương thức kể trên, trình biên dịch sẽ báo lỗi do trùng phương thức (trùng chữ kí)
+- Lí do xảy ra là khi chúng ta sử dụng varargs, cụ thể là ở phương thức addDVD(DigitalVideoDisc... discs), thì discs sẽ được hiểu như là một mảng với các phần tử kiểu DigitalVideoDisc, dẫn tới việc trùng chữ ký
+
+Bạn lựa chọn phương án nào để giải quyết?
+
+- Để giải quyết vấn đề trên chúng ta chỉ sử dụng một trong hai phương thức, cụ thể là phương thức sử dụng varargs, do nó có thể chấp nhận được cả hai cách truyền tham số: truyền một mảng, hoặc truyền lần lượt các phần tử
