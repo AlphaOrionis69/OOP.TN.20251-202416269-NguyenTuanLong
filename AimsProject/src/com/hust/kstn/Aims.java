@@ -19,11 +19,11 @@ public class Aims {
 		cart.addDVD(discs);
 		cart.addDVD(dvd4, dvd5, dvd6);
 		cart.print();
-		System.out.println(cart.calculateTotalCost());
+		//System.out.println(cart.calculateTotalCost());
 		
 		cart.removeDVD(dvd1);
 		cart.print();
-		System.out.println(cart.calculateTotalCost());
+		//System.out.println(cart.calculateTotalCost());
 		
 		cart.removeDVD(dvd1);
 		cart.removeDVD(dvd2);
@@ -32,11 +32,11 @@ public class Aims {
 	
 		for (int i = 0; i < 21; i++) {
 			String str = Integer.toString(i);
-			DigitalVideoDisc newDVD = new DigitalVideoDisc(str, str, (double)i);
+			DigitalVideoDisc newDVD = new DigitalVideoDisc(str, str, str, i, (double)i);
 			cart.addDVD(newDVD);
 		}
 		cart.print();
-		System.out.println(cart.calculateTotalCost());
+		//System.out.println(cart.calculateTotalCost());
 	}
 
 }

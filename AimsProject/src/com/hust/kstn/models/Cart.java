@@ -6,7 +6,7 @@ public class Cart {
 	private int qtyOrdered = 0;
 	public void addDVD(DigitalVideoDisc disc) {
 		if (qtyOrdered >= MAX_NUMBER_ORDERED) {
-			System.out.println("The cart is almost full");
+			System.out.println("The cart is too full to add a disc");
 			return;
 		}
 		itemsInCart[qtyOrdered++] = disc;
@@ -15,7 +15,7 @@ public class Cart {
 	
 	public void addDVD(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
 		if (qtyOrdered + 2 > MAX_NUMBER_ORDERED) {
-			System.out.println("The cart is almost full");
+			System.out.println("The cart is too full to add two discs");
 			return;
 		}
 		addDVD(disc1); addDVD(disc2);
@@ -27,7 +27,7 @@ public class Cart {
 	public void addDVD(DigitalVideoDisc[] discs) {
 		if (discs == null) return;
 		if (qtyOrdered + discs.length > MAX_NUMBER_ORDERED) {
-			System.out.println("The cart is almost full");
+			System.out.println("The cart is too full to add many discs");
 			return;
 		}
 		for (DigitalVideoDisc disc : discs) {
@@ -40,7 +40,7 @@ public class Cart {
 	public void addDVD(DigitalVideoDisc... discs) {
 		if (discs == null) return;
 		if (qtyOrdered + discs.length > MAX_NUMBER_ORDERED) {
-			System.out.println("The cart is almost full");
+			System.out.println("The cart is too full to add many discs");
 			return;
 		}
 		for (DigitalVideoDisc disc : discs) {
@@ -52,7 +52,7 @@ public class Cart {
 	
 	public void removeDVD(DigitalVideoDisc disc) {
 		if (qtyOrdered == 0) {
-			System.out.println("The cart is empty");
+			System.out.println("The cart is empty and has no items to remove");
 			return;
 		}
 		for (int index = 0; index < qtyOrdered; index++) {
@@ -79,13 +79,18 @@ public class Cart {
 		return totalCost;
 	}
 	public void print() {
-		System.out.println("=== Total items in cart: " + qtyOrdered + " ===");
-		System.out.println("=== All items in cart ===");
-		for (int index = 0; index < qtyOrdered; index++) {
-			DigitalVideoDisc item = itemsInCart[index];
-			if (item == null) continue;
-			System.out.println("[Title]: " + item.getTitle() + ", " + "[Cost]: " + item.getCost());
+		if (qtyOrdered == 0) {
+			System.out.println("The current cart is empty");
+			return;
 		}
+		System.out.println("==================================THE CURRENT CART==================================");
+		System.out.println("Total items: " + qtyOrdered);
+		for (int index = 0; index < qtyOrdered; index++) {
+			if (itemsInCart[index] == null) continue;
+			System.out.println(itemsInCart[index].toString());
+		}
+		System.out.printf("Subtotal: %.2f$\n", calculateTotalCost());
+		System.out.println("====================================================================================");
 	}
 	
 	
