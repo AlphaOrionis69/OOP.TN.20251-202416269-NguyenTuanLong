@@ -19,7 +19,7 @@ public class Cart {
 			return;
 		}
 		addDVD(disc1); addDVD(disc2);
-		System.out.println("The two discs have been added successfully");
+		System.out.println("The two discs have been added successfully\n");
 	}
 	
 	// using array as parameter is not better than using varargs in this scenario
@@ -46,7 +46,7 @@ public class Cart {
 		for (DigitalVideoDisc disc : discs) {
 			addDVD(disc);
 		}
-		System.out.println("The list of discs has been added successfully");
+		System.out.println("The list of discs has been added successfully\n");
 	}
 	
 	
@@ -58,7 +58,7 @@ public class Cart {
 		for (int index = 0; index < qtyOrdered; index++) {
 			DigitalVideoDisc item = itemsInCart[index];
 			if (item == null) continue;
-			if (item.equals(disc)) {
+			if (item == disc) {
 				for (int startPos = index; startPos < qtyOrdered-1; startPos++) {
 					itemsInCart[startPos] = itemsInCart[startPos+1];
 				}
