@@ -52,5 +52,10 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 	
+	@Override
+	public String toString() {
+		String output = String.format("- DVD[%d] - [%s] - [%.2f] - [%d] - [%s] - [%s]", id, title, cost, length, category, director);
+		return output;
+	}
 	
 }
