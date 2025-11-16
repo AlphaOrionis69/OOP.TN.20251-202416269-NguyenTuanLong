@@ -3,35 +3,15 @@ package com.hust.kstn.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactDisc {
-	private static int nbCompactDiscs = 0;
-	private int id;
-	private String title;
-	private String category;
-	private double cost;
+public class CompactDisc extends Disc{
 	private List<String> artists = new ArrayList<>();
 	private List<String> directors = new ArrayList<>();
 	private List<Track> tracks = new ArrayList<>();
-	public CompactDisc(String title, String category, double cost, List<String> artists, List<String> directors, List<Track> tracks) {
-		this.id = ++nbCompactDiscs;
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
+	public CompactDisc(String title, double cost, String category, List<String> artists, List<String> directors, List<Track> tracks) {
+		super(title, cost, category);
 		this.artists.addAll(artists);
 		this.directors.addAll(directors);
 		this.tracks.addAll(tracks);
-	}
-	public int getId() {
-		return id;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public double getCost() {
-		return cost;
 	}
 	public List<String> getArtists() {
 		return new ArrayList<>(artists);
@@ -45,7 +25,8 @@ public class CompactDisc {
 	@Override
 	public String toString() {
 		StringBuilder output = new StringBuilder();
-		output.append(String.format("CD[%d][%s][%.2f][%s][%d]", id, title, cost, category, totalLength()));
+		output.append(super.toString());
+		output.append(String.format("[%d]", totalLength()));
 		output.append("\nArtists: "); output.append(artists);
 		output.append("\nDirectors: "); output.append(directors);
 		output.append("\nTracks: "); output.append(tracks);

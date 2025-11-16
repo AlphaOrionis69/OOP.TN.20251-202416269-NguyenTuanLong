@@ -1,0 +1,3 @@
+Nêu ý nghĩa của từ khóa super trong ví dụ mã nguồn của lớp Book.
+
+- Được sử dụng để tái sử dụng constructor (super(title, cost, category)) và phương thức toString() (super.toString()) của lớp cha (Media)
