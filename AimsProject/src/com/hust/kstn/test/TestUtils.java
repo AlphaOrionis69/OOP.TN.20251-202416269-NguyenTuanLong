@@ -65,7 +65,7 @@ public class TestUtils {
 			String category = (String)generateRandomItems(DVD_CATEGORIES);
 			double cost = Math.random()*50.0d + 5.0d;
 			int length = (int)(Math.random()*60.0d) + 70;
-			discs[i] = new DigitalVideoDisc(director, title, category, length, cost);
+			discs[i] = new DigitalVideoDisc(title, cost, category, length, director);
 		}
 		return discs;
 	}
@@ -94,7 +94,7 @@ public class TestUtils {
 			double cost = Math.random()*50.0d + 5.0d;
 			int numOfTokens = (int)(Math.random()*200.0) + 100;
 			List<BookAuthor> authors = generateRandomBookAuthors();
-			books[i] = new Book(title, category, cost, authors, numOfTokens);
+			books[i] = new Book(title, cost, category, authors, numOfTokens);
 		}
 		return books;
 	}
@@ -129,7 +129,7 @@ public class TestUtils {
 			List<String> directors = generateRandomStrings(CD_DIRECTORS);
 			List<String> artists = generateRandomStrings(CD_ARTISTS);
 			List<Track> tracks = generateRandomTracks();
-			discs[i] = new CompactDisc(title, category, cost, artists, directors, tracks);
+			discs[i] = new CompactDisc(title, cost, category, artists, directors, tracks);
 		}
 		return discs;
 	}
