@@ -7,7 +7,7 @@ import com.hust.kstn.models.DigitalVideoDisc;
 public class CartTest {
 	public static void main(String[] args) {
 		// generate some discs
-		DigitalVideoDisc[] discs = TestUtils.generateRandomDiscs(50);
+		DigitalVideoDisc[] discs = TestUtils.generateRandomDigitalVideoDiscs(50);
 		DigitalVideoDisc[] temp = {discs[47], discs[48], discs[49]};
 		
 		

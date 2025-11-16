@@ -33,7 +33,7 @@ public class Book {
 		return cost;
 	}
 	public List<BookAuthor> getAuthors() {
-		return authors;
+		return new ArrayList<>(authors);
 	}
 	public int getNumOfTokens() {
 		return numOfTokens;
