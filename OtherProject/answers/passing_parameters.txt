@@ -1,0 +1,17 @@
+Tại sao sau khi chạy phương thức swap(s1, s2) thì tên hai học sinh vẫn không thay đổi? Từ đó, Java là ngôn ngữ truyền tham trị hay truyền tham chiếu?
+
+- Khi chạy phương thức swap(s1, s2), hai tham chiếu mới được tạo ra (o1, o2), nên việc tráo đổi chỉ là tráo đổi giữa hai tham chiếu mới, hai tham chiếu gốc vẫn không thay đổi
+- Java là ngôn ngữ truyền tham trị
+
+Bạn làm thế nào để phương thức swap hoạt động?
+
+- Để hoạt động, ta sửa trực tiếp trạng thái bên trong của nó (thay đổi nội dung), thông qua đoạn code sau:
+	public static void swap(Student o1, Student o2) {		
+		String tmpName = o1.getName(); int tmpId = o1.getId();
+		o1.setName(o2.getName()); o1.setId(o2.getId());
+		o2.setName(tmpName); o2.setId(tmpId);
+	}
+
+Vẽ sơ đồ minh họa cho các vùng nhớ stack và heap trong trường hợp này để chứng minh cách bạn đưa ra đã hoạt động đúng
+
+- Sơ đồ được lưu ở Diagram.png
