@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import com.hust.kstn.models.Book;
 import com.hust.kstn.models.BookAuthor;
+import com.hust.kstn.models.CompactDisc;
 import com.hust.kstn.models.DigitalVideoDisc;
+import com.hust.kstn.models.Track;
 
 public class TestUtils {
 	public static final String[] DVD_DIRECTORS = {"Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "James Cameron",
@@ -38,18 +40,32 @@ public class TestUtils {
 		    "Computer scientist and ethicist studying AI and society.",
 		    "Storyteller focused on young protagonists facing big-choice worlds."
 	};
-	public static final DigitalVideoDisc[] generateRandomDiscs(int totalNumber) {
+	public static final String[] CD_DIRECTORS = {"Dr. Elias Thorne", "Vivian Chen", "Marcus Vane", "Juno Six", "Hans Zimmer", 
+			"Gustav Holst", "Alma Vega", "Kenji Soto", "Zara Khan", "David Lee"};
+	public static final String[] CD_ARTISTS = {"Nova Rayne", "The Chronauts", "Ella Fitzgerald", "The Meridian Quartet", "KAI-209",
+		    "The Rusty Wrenches", "Samira Jones", "Vicious Circle", "The London Philharmonic", "DJ Pulse"};
+	public static final String[] CD_TITLES = {"Echoes of the Metropolis", "The Crystal Symphony", "Blue Riff", "Nova",
+		    "Chronicles of Aethel", "Road to Redemption", "Electric Soul", "Stolen Moments", "Requiem for a Star", "The Seventh Seal"};
+	public static final String[] CD_CATEGORIES = {"Electronic", "Synthwave", "Classical", "Jazz", "Pop", "Indie", "Soundtrack", "Score",
+		    "Rock", "Blues", "Folk", "Metal", "Ambient", "Gospel"};
+	public static final String[] CD_TRACK_TITLES = {"Neon Heartbeat", "Adagio in D Minor", "Midnight Serenade", "The Ascent", "Starlight Drive", 
+			"Lament for the Fallen", "Blue Hour Shuffle", "Digital Silence", "Fading Light", "The Prophecy"};
+	private static final Object generateRandomItems(Object[] arr) {
+		int objID = (int)(Math.random()*arr.length);
+		return arr[objID];
+	}
+	public static final DigitalVideoDisc[] generateRandomDigitalVideoDiscs(int totalNumber) {
 		if (totalNumber == 0) {
 			System.out.println("Please provide a positive integer\n");
 		}
 		DigitalVideoDisc[] discs = new DigitalVideoDisc[totalNumber];
 		for (int i = 0; i < totalNumber; i++) {
-			int directorID = (int)(Math.random()*DVD_DIRECTORS.length);
-			int titleID = (int)(Math.random()*DVD_TITLES.length);
-			int categoryID = (int)(Math.random()*DVD_CATEGORIES.length);
+			String director = (String)generateRandomItems(DVD_DIRECTORS);
+			String title = (String)generateRandomItems(DVD_TITLES);
+			String category = (String)generateRandomItems(DVD_CATEGORIES);
 			double cost = Math.random()*50.0d + 5.0d;
 			int length = (int)(Math.random()*60.0d) + 70;
-			discs[i] = new DigitalVideoDisc(DVD_TITLES[titleID], DVD_CATEGORIES[categoryID], DVD_DIRECTORS[directorID], length, cost);
+			discs[i] = new DigitalVideoDisc(director, title, category, length, cost);
 		}
 		return discs;
 	}
@@ -58,11 +74,12 @@ public class TestUtils {
 		List<BookAuthor> authors = new ArrayList<>();
 		for (int i = 0; i < totalNumber; i++) {
 			// generate an author infos
-			int bookAuthorID = (int)(Math.random()*BOOK_AUTHORS.length);
-			int bookAuthorShortBiographyID = (int)(Math.random()*BOOK_AUTHOR_SHORT_BIOGRAPHIES.length);
+			String bookAuthor = (String)generateRandomItems(BOOK_AUTHORS);		
+			String bookAuthorShortBiography = (String)generateRandomItems(BOOK_AUTHOR_SHORT_BIOGRAPHIES);
 			int yearOfBirth = (int)(Math.random()*215) + 1800;		
-			authors.add(new BookAuthor(BOOK_AUTHORS[bookAuthorID], yearOfBirth,
-					BOOK_AUTHOR_SHORT_BIOGRAPHIES[bookAuthorShortBiographyID]));
+			authors.add(new BookAuthor(bookAuthor, yearOfBirth,
+					bookAuthorShortBiography));
+			
 		}
 		return authors;
 	}
@@ -72,13 +89,48 @@ public class TestUtils {
 		}
 		Book[] books = new Book[totalNumber];
 		for (int i = 0; i < totalNumber; i++) {
-			int titleID = (int)(Math.random()*BOOK_TITLES.length);
-			int categoryID = (int)(Math.random()*BOOK_CATEGORIES.length);
+			String title = (String)generateRandomItems(BOOK_TITLES);
+			String category = (String)generateRandomItems(BOOK_CATEGORIES);
 			double cost = Math.random()*50.0d + 5.0d;
 			int numOfTokens = (int)(Math.random()*200.0) + 100;
 			List<BookAuthor> authors = generateRandomBookAuthors();
-			books[i] = new Book(BOOK_TITLES[titleID], BOOK_CATEGORIES[categoryID], cost, authors, numOfTokens);
+			books[i] = new Book(title, category, cost, authors, numOfTokens);
 		}
 		return books;
+	}
+	public static final List<Track> generateRandomTracks() {
+		int totalNumber = (int)(Math.random()*10.0d) + 1;
+		List<Track> tracks = new ArrayList<>();
+		for (int i = 0; i < totalNumber; i++) {
+			// generate a track infos
+			String title = (String)generateRandomItems(CD_TRACK_TITLES);				
+			int length = (int)(Math.random()*600) + 300; // by seconds	
+			tracks.add(new Track(title, length));		
+		}
+		return tracks;
+	}
+	public static final List<String> generateRandomStrings(String[] arr) {
+		int totalNumber = (int)(Math.random()*10.0d) + 1;
+		List<String> strings = new ArrayList<>();
+		for (int i = 0; i < totalNumber; i++) {
+			strings.add((String)generateRandomItems(arr));	
+		}
+		return strings;
+	}
+	public static final CompactDisc[] generateRandomCompactDiscs(int totalNumber) {
+		if (totalNumber == 0) {
+			System.out.println("Please provide a positive integer");
+		}
+		CompactDisc[] discs = new CompactDisc[totalNumber];
+		for (int i = 0; i < totalNumber; i++) {
+			String title = (String)generateRandomItems(CD_TITLES);
+			String category = (String)generateRandomItems(CD_CATEGORIES);
+			double cost = Math.random()*50.0d + 5.0d;
+			List<String> directors = generateRandomStrings(CD_DIRECTORS);
+			List<String> artists = generateRandomStrings(CD_ARTISTS);
+			List<Track> tracks = generateRandomTracks();
+			discs[i] = new CompactDisc(title, category, cost, artists, directors, tracks);
+		}
+		return discs;
 	}
 }

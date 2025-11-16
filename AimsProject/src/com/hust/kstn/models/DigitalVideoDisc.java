@@ -27,24 +27,24 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 	public DigitalVideoDisc(String title) {
-		this.id = nbDigitalVideoDiscs++; 
+		this.id = ++nbDigitalVideoDiscs; 
 		this.title = title;
 	}
 	public DigitalVideoDisc(String title, String category, double cost) {
-		this.id = nbDigitalVideoDiscs++; 
+		this.id = ++nbDigitalVideoDiscs; 
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, double cost) {
-		this.id = nbDigitalVideoDiscs++; 
+		this.id = ++nbDigitalVideoDiscs; 
 		this.title = title;
 		this.category = category;
 		this.director = director;
 		this.cost = cost;
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-		this.id = nbDigitalVideoDiscs++; 
+		this.id = ++nbDigitalVideoDiscs; 
 		this.title = title;
 		this.category = category;
 		this.director = director;

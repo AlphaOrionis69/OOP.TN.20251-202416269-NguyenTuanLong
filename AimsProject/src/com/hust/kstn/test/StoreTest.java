@@ -6,7 +6,7 @@ import com.hust.kstn.models.Store;
 public class StoreTest {
 
 	public static void main(String[] args) {
-		DigitalVideoDisc[] discs = TestUtils.generateRandomDiscs(50);
+		DigitalVideoDisc[] discs = TestUtils.generateRandomDigitalVideoDiscs(50);
 		Store store = new Store();
 		store.addDVD(discs[0]); // added successfully
 		store.addDVD(discs[1]); // added successfully
